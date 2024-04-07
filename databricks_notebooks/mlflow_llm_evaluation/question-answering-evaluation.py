@@ -14,15 +14,15 @@
 
 # MAGIC %md ## Update manifest
 # MAGIC
+# MAGIC #### Source
+# MAGIC
+# MAGIC * This notebook is a slight adaptation of the QA Evaluation Notebook from the Databricks doc site.
+# MAGIC   * https://docs.databricks.com/en/_extras/notebooks/source/mlflow/question-answering-evaluation.html
+# MAGIC * Clone date: 2024-04-05
+# MAGIC
 # MAGIC #### Status
 # MAGIC
 # MAGIC * Notebook works.
-# MAGIC
-# MAGIC #### Source
-# MAGIC
-# MAGIC * This notebook is a slight adaptation of the [QA Evaluation Notebook](https://mlflow.org/docs/latest/llms/llm-evaluate/notebooks/index.html#qa-evaluation-notebook) from the Databricks doc site.
-# MAGIC * Original cloned source: [original/question-answering-evaluation_databricks]($original/question-answering-evaluation_databricks).
-# MAGIC * Clone date: 2024-04-05
 
 # COMMAND ----------
 
