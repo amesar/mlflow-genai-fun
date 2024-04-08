@@ -20,6 +20,9 @@
 # MAGIC   * https://docs.databricks.com/en/_extras/notebooks/source/mlflow/question-answering-evaluation.html
 # MAGIC * Clone date: 2024-04-05
 # MAGIC
+# MAGIC #### Changes
+# MAGIC * Fixed deprecated langchain imports
+# MAGIC
 # MAGIC #### Status
 # MAGIC
 # MAGIC * Notebook works.
@@ -117,25 +120,26 @@ eval_df = pd.DataFrame(
 
 # COMMAND ----------
 
-with mlflow.start_run() as run:
+with mlflow.start_run(run_name="run1_model") as run:
     system_prompt = "Answer the following question in two sentences"
     basic_qa_model = mlflow.openai.log_model(
-        model="gpt-3.5-turbo",
-        task=openai.ChatCompletion,
-        artifact_path="model",
-        messages=[
+        model = "gpt-3.5-turbo",
+        task = openai.ChatCompletion,
+        artifact_path = "model",
+        messages = [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": "{question}"},
         ]
     )
-    results = mlflow.evaluate(
+    # Creates artifact 'eval_results_table.json' in the MLflow run
+    results = mlflow.evaluate(  
         basic_qa_model.model_uri,
         eval_df,
-        targets="ground_truth",  # specify which column corresponds to the expected output
-        model_type="question-answering",  # model type indicates which metrics are relevant for this task
-        evaluators="default"
+        targets = "ground_truth",  # specify which column corresponds to the expected output
+        model_type = "question-answering",  # model type indicates which metrics are relevant for this task
+        evaluators = "default"
     )
-results.metrics
+results.metrics, basic_qa_model.model_uri
 
 # COMMAND ----------
 
@@ -144,7 +148,7 @@ results.metrics
 
 # COMMAND ----------
 
-results.tables["eval_results_table"]
+display(results.tables["eval_results_table"])
 
 # COMMAND ----------
 
@@ -190,7 +194,7 @@ print(answer_similarity_metric)
 
 # COMMAND ----------
 
-with mlflow.start_run() as run:
+with mlflow.start_run(run_name="run2_eval") as run:
     results = mlflow.evaluate(
         basic_qa_model.model_uri,
         eval_df,
@@ -208,7 +212,7 @@ results.metrics
 
 # COMMAND ----------
 
-results.tables["eval_results_table"]
+display(results.tables["eval_results_table"])
 
 # COMMAND ----------
 
@@ -267,7 +271,7 @@ print(professionalism_metric)
 
 # COMMAND ----------
 
-with mlflow.start_run() as run:
+with mlflow.start_run(run_name="run3_eval") as run:
     results = mlflow.evaluate(
         basic_qa_model.model_uri,
         eval_df,
@@ -279,7 +283,7 @@ print(results.metrics)
 
 # COMMAND ----------
 
-results.tables["eval_results_table"]
+display(results.tables["eval_results_table"])
 
 # COMMAND ----------
 
@@ -293,7 +297,7 @@ results.tables["eval_results_table"]
 
 # COMMAND ----------
 
-with mlflow.start_run() as run:
+with mlflow.start_run(run_name="run4_model") as run:
     system_prompt = "Answer the following question using extreme formality."
     professional_qa_model = mlflow.openai.log_model(
         model="gpt-3.5-turbo",
@@ -315,4 +319,4 @@ print(results.metrics)
 
 # COMMAND ----------
 
-results.tables["eval_results_table"]
+display(results.tables["eval_results_table"])
