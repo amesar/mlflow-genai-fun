@@ -100,7 +100,9 @@ udf = mlflow.pyfunc.spark_udf(spark, model_uri, "string")
 
 # MAGIC %md ##### Call model with questions
 # MAGIC
-# MAGIC Takes about 20 seconds per question for `llama_2_7b_chat_hf` model.
+# MAGIC For `llama_2_7b_chat_hf` model takes about:
+# MAGIC * 20 seconds per question for GPU
+# MAGIC * 52.27 minutes on a CPU 
 
 # COMMAND ----------
 

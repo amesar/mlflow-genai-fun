@@ -11,9 +11,9 @@
 # MAGIC     * `Workload size` - Small
 # MAGIC
 # MAGIC ##### Notebooks
-# MAGIC * [Batch_Score_Llama_2]($Batch_Score_Llama_2) - Batch scoring with Spark UDF.
+# MAGIC * [Batch_Score_Llama2]($Batch_Score_Llama2) - Batch scoring with Spark UDF.
 # MAGIC   * Input questions can be read from a table or file and output can be stored in a table.
-# MAGIC * [Model_Serve_Llama_2]($Model_Serve_Llama_2) - Real-time scoring with model serving endpoint.
+# MAGIC * [Model_Serve_Llama2]($Model_Serve_Llama2) - Real-time scoring with model serving endpoint.
 # MAGIC * [Common]($Common)
 # MAGIC
 # MAGIC ##### Enhanced Databricks Marketplace Sample
@@ -25,4 +25,4 @@
 # MAGIC ##### Github
 # MAGIC * https://github.com/amesar/mlflow-examples/tree/master/databricks/notebooks/llama2
 # MAGIC
-# MAGIC ##### Last updated: _2024-05-05_
+# MAGIC ##### Last updated: _2024-04-05_
