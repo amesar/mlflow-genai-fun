@@ -19,20 +19,37 @@
 # MAGIC * Clone date: 2024-04-05
 # MAGIC
 # MAGIC #### Changes
-# MAGIC * Added `!pip install chromadb`
+# MAGIC * Fixed deprecated langchain imports.
+# MAGIC * Added `!pip install chromadb`.
+# MAGIC * Had to add pip install langchain to fix deprecated `text-davinci-003` model error.
 # MAGIC
-# MAGIC #### Status - Errors
-# MAGIC
-# MAGIC * InvalidRequestError: The model `text-davinci-003` has been deprecated, learn more here: https://platform.openai.com/docs/
-# MAGIC deprecations
-# MAGIC * https://platform.openai.com/docs/deprecations
-# MAGIC * recommended replacement: gpt-3.5-turbo-instruct
-# MAGIC * https://github.com/mlflow/mlflow/blob/master/mlflow/utils/openai_utils.py#L114
+# MAGIC #### Status
+# MAGIC * Notebook works.
+# MAGIC * Intermittent OpenAI rate limit errors. 
 
 # COMMAND ----------
 
-!pip install chromadb
-!pip install mlflow-skinny==2.11.3
+# MAGIC %md ## Setup
+
+# COMMAND ----------
+
+import os
+import mlflow
+import langchain
+import openai
+import pandas as pd
+
+print("mlflow.version:   ", mlflow.__version__)
+print("langchain.version:", langchain.__version__)
+print("openai.version:   ", openai.__version__)
+print("databricks.runtime.version:", os.environ.get("DATABRICKS_RUNTIME_VERSION"))
+
+# COMMAND ----------
+
+!pip install -U chromadb
+!pip install -U mlflow-skinny==2.11.3
+!pip install -U 'langchain>=0.1.14'
+!pip install -U 'openai>=1.16.2'
 dbutils.library.restartPython()
 
 # COMMAND ----------
@@ -45,12 +62,10 @@ import pandas as pd
 print("mlflow.version:   ", mlflow.__version__)
 print("langchain.version:", langchain.__version__)
 print("openai.version:   ", openai.__version__)
-print("pandas.version:   ", pd.__version__)
 
 # COMMAND ----------
 
-# MAGIC %md
-# MAGIC ## Widgets
+# MAGIC %md ## Widgets
 
 # COMMAND ----------
 
@@ -131,11 +146,7 @@ qa = RetrievalQA.from_chain_type(
 # COMMAND ----------
 
 def model(input_df):
-    answer = []
-    for index, row in input_df.iterrows():
-        answer.append(qa(row["questions"]))
-
-    return answer
+    return [ qa(row["questions"]) for index, row in input_df.iterrows() ]
 
 # COMMAND ----------
 
@@ -221,4 +232,4 @@ print(results.metrics)
 
 # COMMAND ----------
 
-results.tables["eval_results_table"]
+display(results.tables["eval_results_table"])
