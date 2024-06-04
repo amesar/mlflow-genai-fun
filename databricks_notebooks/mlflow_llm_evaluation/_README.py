@@ -4,7 +4,7 @@
 # MAGIC #### Overview
 # MAGIC * Databricks notebooks for MLflow LLM evaluation examples.
 # MAGIC * Notebooks adapted from Databricks and MLflow web sites.
-# MAGIC * Note: ntermittent OpenAI rate limit errors prevent succesfull execution of notebooks.
+# MAGIC * Note: intermittent OpenAI rate limit errors prevent succesfull execution of notebooks.
 # MAGIC
 # MAGIC #### Notebooks
 # MAGIC * [question-answering-evaluation]($question-answering-evaluation)
@@ -14,7 +14,7 @@
 # MAGIC #### Original downloaded notebooks
 # MAGIC * [Original notebooks]($original) - as downloaded on 2024-04-05
 # MAGIC
-# MAGIC ###### Last updated _2024-04-08_
+# MAGIC ###### Last updated _2024-06-04_
 
 # COMMAND ----------
 

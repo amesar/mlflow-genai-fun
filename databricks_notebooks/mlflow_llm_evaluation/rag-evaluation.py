@@ -30,6 +30,31 @@
 # COMMAND ----------
 
 # MAGIC %md ## Setup
+# MAGIC
+# MAGIC #### Worked
+# MAGIC ```
+# MAGIC mlflow.version:    2.9.2
+# MAGIC langchain.version: 0.0.348
+# MAGIC openai.version:    0.28.1
+# MAGIC databricks.runtime.version: 14.3
+# MAGIC
+# MAGIC 4/7/2024, 11:58:13 PM on andre_ML_14.3
+# MAGIC ```
+# MAGIC
+# MAGIC #### Latest
+# MAGIC ```
+# MAGIC mlflow.version:    2.11.1
+# MAGIC langchain.version: 0.1.3
+# MAGIC openai.version:    1.9.0
+# MAGIC databricks.runtime.version: 15.1
+# MAGIC ```
+# MAGIC
+# MAGIC #### xx
+# MAGIC ```
+# MAGIC mlflow.version:    2.13.0
+# MAGIC langchain.version: 0.2.1
+# MAGIC openai.version:    1.30.2
+# MAGIC ```
 
 # COMMAND ----------
 
@@ -47,7 +72,8 @@ print("databricks.runtime.version:", os.environ.get("DATABRICKS_RUNTIME_VERSION"
 # COMMAND ----------
 
 !pip install -U chromadb
-!pip install -U mlflow-skinny==2.11.3
+#!pip install -U mlflow-skinny==2.11.3
+!pip install -U mlflow-skinny==2.13.0
 !pip install -U 'langchain>=0.1.14'
 !pip install -U 'openai>=1.16.2'
 dbutils.library.restartPython()

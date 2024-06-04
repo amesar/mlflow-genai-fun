@@ -6,4 +6,4 @@
 # MAGIC * [includes]($./includes) - Common functions.
 # MAGIC   * [HttpClient]($./includes/HttpClient) - [ModelServingClient]($./includes/ModelServingClient)
 # MAGIC
-# MAGIC ###### Last updated _2024-04-08_
+# MAGIC ###### Last updated _2024-06-04_

@@ -25,20 +25,39 @@
 # MAGIC
 # MAGIC #### Status
 # MAGIC
-# MAGIC * Notebook works.
+# MAGIC Latest
+# MAGIC * openai 1.30.1 - May 14, 2024
+# MAGIC
+# MAGIC DBR ML 15.1 Defaults
+# MAGIC * mlflow.version: 2.11.1
+# MAGIC * openai.version: 1.9.0 - Jan 21, 2024
+# MAGIC
+# MAGIC Notebook works with the following:
+# MAGIC * mlflow.version: 2.13.0, 2.9.2
+# MAGIC * openai.version: 0.28.1 - Sep 25, 2023
+# MAGIC * DATABRICKS_RUNTIME_VERSION: 15.1
 
 # COMMAND ----------
 
 # MAGIC %md ## Setup
 # MAGIC
-# MAGIC If your cluster is running Databricks Runtime, uncomment and run the following cell to install the `mlflow` library. This is required for Databricks Runtime clusters only. If you are using a cluster running Databricks Runtime ML, skip to Set OpenAI Key step.
+# MAGIC Assume Databricks Runtime ML.
 
 # COMMAND ----------
 
-# If you are running Databricks Runtime, uncomment this line and run this cell
+import os
+import openai
+import mlflow
 
-#%pip install mlflow
-#dbutils.library.restartPython()
+print("mlflow.version:", mlflow.__version__)
+print("openai.version:", openai.__version__)
+print("DATABRICKS_RUNTIME_VERSION:", os.environ.get("DATABRICKS_RUNTIME_VERSION"))
+
+# COMMAND ----------
+
+# MAGIC %pip install mlflow_skinny==2.13.0
+# MAGIC %pip install openai==0.28.1 
+# MAGIC dbutils.library.restartPython()
 
 # COMMAND ----------
 
@@ -49,6 +68,7 @@ import mlflow
 
 print("mlflow.version:", mlflow.__version__)
 print("openai.version:", openai.__version__)
+print("DATABRICKS_RUNTIME_VERSION:", os.environ.get("DATABRICKS_RUNTIME_VERSION"))
 
 # COMMAND ----------
 
